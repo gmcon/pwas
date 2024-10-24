@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos FBX Animados</title>
+    <link rel="manifest" href="./manifest.json">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-image: url('texturas/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3 id="clicTexto" style="color: white;">Clic dentro en la pagina para comenzar</h3>
+    </center>
+
+    <!-- Incluir Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Incluir fflate para descompresión -->
+    <script src="https://cdn.jsdelivr.net/npm/fflate/umd/index.min.js"></script>
+    <!-- Incluir FBXLoader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/FBXLoader.js"></script>
+
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then((registration) => {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch((error) => {
+                    console.error('Error registrando el Service Worker:', error);
+                });
+            });
+        }
+
+        // El resto del código de tu aplicación (como la carga de la escena) sigue igual...
+    </script>
+</body>
+</html>
