@@ -19,24 +19,3 @@
   ]
 }
 
-{
-  "name": "Modelos FBX Animados",
-  "short_name": "FBXApp",
-  "description": "Una aplicación web que muestra modelos FBX animados.",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#ffffff",
-  "icons": [
-    {
-      "src": "icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
