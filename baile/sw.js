@@ -18,18 +18,20 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        return cache.addAll(urlsToCache).catch((error) => {
-          console.error('Error al agregar archivos a la caché:', error);
-          for (let url of urlsToCache) {
-            fetch(url).then(response => {
-              if (!response.ok) {
-                console.error(`Error al cargar el recurso: ${url} - Estado: ${response.status}`);
-              }
-            }).catch(err => {
-              console.error(`Error al intentar acceder a la URL: ${url}`, err);
-            });
-          }
-        });
+        return Promise.all(
+          urlsToCache.map((url) =>
+            fetch(url)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`Error al cargar ${url}: ${response.statusText}`);
+                }
+                return cache.put(url, response);
+              })
+              .catch((error) => {
+                console.error(`No se pudo cachear ${url}:`, error);
+              })
+          )
+        );
       })
   );
 });
