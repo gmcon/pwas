@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+{
+  "name": "Modelos FBX Animados",
+  "short_name": "FBXApp",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+=======
 {
   "name": "Modelos FBX Animados",
   "short_name": "FBXApp",
@@ -19,3 +41,4 @@
     }
   ]
 }
+>>>>>>> 750df70a10cb06435e25e88f09415c044e9df1b3
