@@ -18,7 +18,18 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache).catch((error) => {
+          console.error('Error al agregar archivos a la caché:', error);
+          for (let url of urlsToCache) {
+            fetch(url).then(response => {
+              if (!response.ok) {
+                console.error(`Error al cargar el recurso: ${url} - Estado: ${response.status}`);
+              }
+            }).catch(err => {
+              console.error(`Error al intentar acceder a la URL: ${url}`, err);
+            });
+          }
+        });
       })
   );
 });
